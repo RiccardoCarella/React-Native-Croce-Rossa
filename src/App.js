@@ -89,12 +89,6 @@ export default class extends Component {
           <Stack.Screen name="Info" component={Info} />
         </Stack.Navigator>
       </NavigationContainer>
-      // <View style={styles.container}>
-      //   <StatusBar barStyle="light-content" />
-      //   <View style={styles.slide}>
-      //     <Home />
-      //   </View>
-      // </View>
     );
   }
 }

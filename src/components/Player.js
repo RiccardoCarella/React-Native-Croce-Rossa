@@ -271,6 +271,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
+    marginTop: 20,
+    marginBottom: 20,
   },
   infoContainer: {
     flex: 1,

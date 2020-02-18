@@ -36,13 +36,14 @@ export default class Home extends PureComponent {
             flex: 2,
             flexDirection: 'row',
             justifyContent: 'center',
+            alignItems: 'flex-start',
           }}>
           <FlexImage
             style={{flex: 0.8}}
             source={require('./img/logo-payload.png')}
           />
         </View>
-        <View style={{flex: 2.5, padding: 10}}>
+        <View style={{flex: 2.5, padding: 10, justifyContent: 'center'}}>
           <Text
             style={{
               color: '#000',
