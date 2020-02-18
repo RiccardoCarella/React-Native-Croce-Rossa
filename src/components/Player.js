@@ -6,11 +6,11 @@ import {
   Image,
   StyleSheet,
   ActivityIndicator,
+  TouchableOpacity,
   Dimensions,
   Platform,
   PixelRatio,
 } from 'react-native';
-import {Button} from 'react-native-elements';
 /* COMPONENTS */
 import Config from './Config';
 
@@ -79,7 +79,6 @@ export default class Player extends PureComponent {
     fetch(`${this.state.config.streamingURL}`)
       .then(response => response.json())
       .then(responseJson => {
-        console.warn(responseJson.icestats.source[0].title);
         /* Get the artist and title and split them into an array */
         let song = responseJson.icestats.source[0].title
           .replace(/(.*)\s.*/gm, '$1')
@@ -228,18 +227,24 @@ export default class Player extends PureComponent {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Button
-            icon={
-              <Icon
-                name="share-alt"
-                size={25}
-                color="white"
-                style={{marginRight: 10, marginLeft: 5}}
-              />
-            }
-            title="Condividi"
-            buttonStyle={{backgroundColor: '#c00'}}
-          />
+          <TouchableOpacity
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#DDDDDD',
+              padding: 10,
+              flexDirection: 'row',
+              backgroundColor: '#c00',
+              borderRadius: 8,
+            }}>
+            <Icon
+              name="share-alt"
+              style={{color: '#fff', marginRight: 10, fontSize: normalize(20)}}
+            />
+            <Text style={{color: '#fff', fontSize: normalize(20)}}>
+              Condividi
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
