@@ -1,6 +1,7 @@
 /* REACT */
 import React, {PureComponent} from 'react';
 import {Text, View} from 'react-native';
+
 /* COMPONENTS */
 import Logo from './components/Logo';
 import Player from './components/Player';

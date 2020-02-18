@@ -7,12 +7,13 @@ import {
   StyleSheet,
   ActivityIndicator,
   TouchableOpacity,
-  Dimensions,
-  Platform,
-  PixelRatio,
+  Share,
 } from 'react-native';
 /* COMPONENTS */
 import Config from './Config';
+
+/* UTILS */
+import {normalize} from '../utils';
 
 /* LIBRARIES */
 import TrackPlayer, {Capability, Event, State} from 'react-native-track-player';
@@ -40,20 +41,6 @@ TrackPlayer.setupPlayer().then(async () => {
     artwork: require('../img/logo.png'),
   });
 });
-
-/* Font scale */
-const {width: SCREEN_WIDTH, height: SCREEN_HEIGHT} = Dimensions.get('window');
-
-// based on iphone 5s's scale
-const scale = SCREEN_WIDTH / 360;
-function normalize(size) {
-  const newSize = size * scale;
-  if (Platform.OS === 'ios') {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-}
 
 export default class Player extends PureComponent {
   constructor(props) {
@@ -206,8 +193,14 @@ export default class Player extends PureComponent {
           ) : (
             <Icon
               // name={this.state.playing === true ? 'pause' : 'play'}
-              name={this.state.playing === true ? 'pause' : 'play'}
-              style={{fontSize: normalize(60), marginBottom: 30}}
+              name={
+                this.state.playing === true ? 'pause-circle' : 'play-circle'
+              }
+              style={{
+                fontSize: normalize(80),
+                marginBottom: 30,
+                color: '#c00',
+              }}
               onPress={() => {
                 this.state.playing === true
                   ? this.pushMusic()

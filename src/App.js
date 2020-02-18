@@ -5,6 +5,9 @@ import {View, Text, StatusBar, Dimensions} from 'react-native';
 /* COMPONENTS */
 import Config from './components/Config';
 
+/* UTILS */
+import {normalize} from './utils';
+
 /* STORAGE */
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -72,7 +75,11 @@ export default class extends Component {
               headerRight: () => (
                 <Icon
                   name="info"
-                  style={{color: '#fff', fontSize: 30, marginRight: 15}}
+                  style={{
+                    color: '#fff',
+                    fontSize: normalize(30),
+                    marginRight: 15,
+                  }}
                   onPress={() => {
                     navigation.navigate('Info');
                   }}></Icon>
