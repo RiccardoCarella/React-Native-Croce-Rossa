@@ -8,11 +8,20 @@ import Config from './components/Config';
 /* STORAGE */
 import AsyncStorage from '@react-native-community/async-storage';
 
+/* REACT NAVIGATOR */
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+/* VECTOR ICONS */
+import Icon from 'react-native-vector-icons/Feather';
+
 /* PAGES */
 import Home from './Home';
+import Info from './Info';
 
 const {width, height} = Dimensions.get('window');
-
+const Stack = createStackNavigator();
 export default class extends Component {
   componentDidMount() {
     /********* TODO ************/
@@ -43,12 +52,42 @@ export default class extends Component {
   };
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <View style={styles.slide}>
-          <Home />
-        </View>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#c00',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerTitleAlign: 'center',
+          }}>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={({navigation}) => ({
+              headerTitle: 'Frequenza Croce Rossa',
+              headerRight: () => (
+                <Icon
+                  name="info"
+                  style={{color: '#fff', fontSize: 30, marginRight: 15}}
+                  onPress={() => {
+                    navigation.navigate('Info');
+                  }}></Icon>
+              ),
+            })}
+          />
+          <Stack.Screen name="Info" component={Info} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      // <View style={styles.container}>
+      //   <StatusBar barStyle="light-content" />
+      //   <View style={styles.slide}>
+      //     <Home />
+      //   </View>
+      // </View>
     );
   }
 }

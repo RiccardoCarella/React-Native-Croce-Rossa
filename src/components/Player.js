@@ -10,7 +10,7 @@ import {
   Platform,
   PixelRatio,
 } from 'react-native';
-
+import {Button} from 'react-native-elements';
 /* COMPONENTS */
 import Config from './Config';
 
@@ -201,28 +201,45 @@ export default class Player extends PureComponent {
             }
           />
         </View>
-        <View style={styles.iconContainer}>
+        <View style={styles.infoContainer}>
           {this.state.buffering ? (
             <ActivityIndicator size="large" color="#d3d3d3" />
           ) : (
             <Icon
               // name={this.state.playing === true ? 'pause' : 'play'}
               name={this.state.playing === true ? 'pause' : 'play'}
-              style={{fontSize: normalize(60)}}
+              style={{fontSize: normalize(60), marginBottom: 30}}
               onPress={() => {
                 this.state.playing === true
                   ? this.pushMusic()
                   : this.playMusic();
               }}></Icon>
           )}
-        </View>
-        <View style={styles.infoContainer}>
           <Text style={styles.title}>
             {this.state.buffering ? '' : this.state.title}
           </Text>
           <Text style={styles.artist}>
             {this.state.buffering ? '' : this.state.artist}
           </Text>
+        </View>
+        <View
+          style={{
+            flex: 0.4,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Button
+            icon={
+              <Icon
+                name="share-alt"
+                size={25}
+                color="white"
+                style={{marginRight: 10, marginLeft: 5}}
+              />
+            }
+            title="Condividi"
+            buttonStyle={{backgroundColor: '#c00'}}
+          />
         </View>
       </View>
     );
@@ -237,15 +254,9 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   artworkContainer: {
-    flex: 4,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-  },
-  iconContainer: {
-    flex: 2,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   infoContainer: {
     flex: 1,
