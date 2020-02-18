@@ -14,7 +14,6 @@ export default class Home extends PureComponent {
   render() {
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
-        {/* <Logo /> */}
         <Player />
       </View>
     );

@@ -168,6 +168,21 @@ export default class Player extends PureComponent {
     TrackPlayer.stop();
   }
 
+  onShare = () => {
+    const {title, artist} = this.state;
+
+    let metadata = title;
+    if (artist) {
+      metadata = `${artist} - ${metadata}`;
+    }
+
+    if (metadata) {
+      Share.share({
+        message: `Sto ascoltando "${metadata}" su Frequenza Croce Rossa`,
+      });
+    }
+  };
+
   render() {
     if (this.state.config === null) {
       return null;
@@ -229,7 +244,8 @@ export default class Player extends PureComponent {
               flexDirection: 'row',
               backgroundColor: '#c00',
               borderRadius: 8,
-            }}>
+            }}
+            onPress={this.onShare}>
             <Icon
               name="share-alt"
               style={{color: '#fff', marginRight: 10, fontSize: normalize(20)}}
