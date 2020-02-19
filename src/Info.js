@@ -1,6 +1,6 @@
 /* REACT */
 import React, {PureComponent} from 'react';
-import {Text, View, Linking} from 'react-native';
+import {Text, View, Linking, TouchableOpacity} from 'react-native';
 
 /* COMPONENTS */
 import Config from './components/Config';
@@ -58,15 +58,21 @@ export default class Home extends PureComponent {
             }}>
             {this.state.config.description}
           </Text>
-          <Text
+          <TouchableOpacity
             style={{
-              color: 'blue',
-              fontSize: normalize(20),
-              textAlign: 'center',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#DDDDDD',
+              padding: 10,
+              flexDirection: 'row',
+              backgroundColor: '#c00',
+              borderRadius: 8,
             }}
             onPress={() => Linking.openURL(`${this.state.config.website}`)}>
-            Vai al sito!
-          </Text>
+            <Text style={{color: '#fff', fontSize: normalize(20)}}>
+              Vai al sito
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
