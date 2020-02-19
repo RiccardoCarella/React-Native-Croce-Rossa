@@ -60,6 +60,7 @@ export default class Home extends PureComponent {
           </Text>
           <TouchableOpacity
             style={{
+              marginTop: 10,
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: '#DDDDDD',
