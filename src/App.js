@@ -15,19 +15,50 @@ import AsyncStorage from '@react-native-community/async-storage';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 /* VECTOR ICONS */
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 /* SPLASH SCREEN */
 import RNBootSplash from 'react-native-bootsplash';
 
 /* PAGES */
 import Home from './Home';
+import Podcast from './Podcast';
 import Info from './Info';
 
 const {width, height} = Dimensions.get('window');
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function Tabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = 'home-variant-outline';
+          } else if (route.name === 'Podcast') {
+            iconName = 'podcast';
+          }
+
+          // You can return any component that you like here!
+          return <Icon name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: '#c00',
+        inactiveTintColor: 'grey',
+      }}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Podcast" component={Podcast} />
+    </Tab.Navigator>
+  );
+}
+
 export default class extends Component {
   componentDidMount() {
     /* Hides the splash screen after at least 1s */
@@ -70,13 +101,13 @@ export default class extends Component {
             headerTitleAlign: 'center',
           }}>
           <Stack.Screen
-            name="Home"
-            component={Home}
+            name="Tabs"
+            component={Tabs}
             options={({navigation}) => ({
               headerTitle: 'Frequenza Croce Rossa',
               headerRight: () => (
                 <Icon
-                  name="info"
+                  name="information-outline"
                   style={{
                     color: '#fff',
                     fontSize: normalize(30),
