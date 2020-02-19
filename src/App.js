@@ -19,6 +19,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 /* VECTOR ICONS */
 import Icon from 'react-native-vector-icons/Feather';
 
+/* SPLASH SCREEN */
+import RNBootSplash from 'react-native-bootsplash';
+
 /* PAGES */
 import Home from './Home';
 import Info from './Info';
@@ -27,11 +30,10 @@ const {width, height} = Dimensions.get('window');
 const Stack = createStackNavigator();
 export default class extends Component {
   componentDidMount() {
-    /********* TODO ************/
     /* Hides the splash screen after at least 1s */
-    // setTimeout(() => {
-    //   RNBootSplash.hide({duration: 250});
-    // }, 1000);
+    setTimeout(() => {
+      RNBootSplash.hide({duration: 250});
+    }, 1000);
 
     /* Fetch the config file */
     fetch(
