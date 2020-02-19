@@ -178,7 +178,7 @@ export default class Player extends PureComponent {
 
     if (metadata) {
       Share.share({
-        message: `Sto ascoltando "${metadata}" su Frequenza Croce Rossa`,
+        message: `Sto ascoltando "${metadata}" su Frequenza Croce Rossa ${this.state.config.website}`,
       });
     }
   };
