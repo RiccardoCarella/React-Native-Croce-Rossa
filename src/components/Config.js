@@ -1,6 +1,6 @@
 /* REACT */
 import React, {PureComponent} from 'react';
-import {AsyncStorage} from 'react-native';
+import {AsyncStorage} from '@react-native-community/async-storage';
 
 let _config = {};
 
@@ -8,9 +8,10 @@ const Config = {
   //   init: function() {
   //     config = JSON.parse();
   //   },
-  init: function() {
+  init: async function() {
+    let config = {};
     try {
-      let stringConfig = AsyncStorage.getItem('config');
+      let stringConfig = await AsyncStorage.getItem('config');
       config = JSON.parse(stringConfig);
     } catch (e) {
       config = require('../../config-app.json');

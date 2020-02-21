@@ -30,7 +30,8 @@ export default class Home extends PureComponent {
     // }
     return (
       <View style={{flex: 1}}>
-        <ScrollView>
+        <ScrollView style={{marginTop: 10}}>
+          {/* <PodcastBox data={data} /> */}
           <PodcastBox />
         </ScrollView>
       </View>

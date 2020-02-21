@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   boxContainer: {
     backgroundColor: 'white',
     margin: 10,
+    marginTop: 0,
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
