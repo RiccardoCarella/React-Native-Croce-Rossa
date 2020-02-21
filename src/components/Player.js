@@ -204,7 +204,7 @@ export default class Player extends PureComponent {
         </View>
         <View style={styles.infoContainer}>
           {this.state.buffering ? (
-            <ActivityIndicator size="large" color="#d3d3d3" />
+            <ActivityIndicator size="large" color="#c00" />
           ) : (
             <Icon
               // name={this.state.playing === true ? 'pause' : 'play'}
