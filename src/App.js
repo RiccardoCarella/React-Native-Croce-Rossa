@@ -6,7 +6,7 @@ import {View, Text, StatusBar, Dimensions} from 'react-native';
 import Config from './components/Config';
 
 /* UTILS */
-import {normalize} from './utils';
+import {normalize} from './components/utils';
 
 /* STORAGE */
 import AsyncStorage from '@react-native-community/async-storage';
@@ -26,6 +26,7 @@ import RNBootSplash from 'react-native-bootsplash';
 /* PAGES */
 import Home from './Home';
 import Podcast from './Podcast';
+import PodcastSingle from './PodcastSingle';
 import Info from './Info';
 
 const {width, height} = Dimensions.get('window');
@@ -120,6 +121,13 @@ export default class extends Component {
             })}
           />
           <Stack.Screen name="Info" component={Info} />
+          <Stack.Screen
+            name="PodcastSingle"
+            component={PodcastSingle}
+            options={({navigation}) => ({
+              headerTitle: 'Podcast',
+            })}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );

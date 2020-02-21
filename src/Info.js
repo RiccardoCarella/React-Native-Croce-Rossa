@@ -6,7 +6,7 @@ import {Text, View, Linking, TouchableOpacity} from 'react-native';
 import Config from './components/Config';
 
 /* UTILS */
-import {normalize} from './utils';
+import {normalize} from './components/utils';
 
 /* LIBRARIES */
 import FlexImage from 'react-native-flex-image';

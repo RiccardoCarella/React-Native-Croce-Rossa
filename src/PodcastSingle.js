@@ -1,10 +1,6 @@
 /* REACT */
 import React, {PureComponent} from 'react';
-import {Text, View, ScrollView, Button} from 'react-native';
-
-/* COMPONENTS */
-import Config from './components/Config';
-import PodcastBox from './components/PodcastBox';
+import {Text, View, ScrollView} from 'react-native';
 
 /* UTILS */
 import {normalize} from './components/utils';
@@ -12,7 +8,9 @@ import {normalize} from './components/utils';
 export default class Home extends PureComponent {
   constructor(props) {
     super(props);
+    let data = props.route.params;
     this.state = {
+      data: data,
       config: null,
     };
   }
@@ -30,10 +28,7 @@ export default class Home extends PureComponent {
     // }
     return (
       <View style={{flex: 1}}>
-        <ScrollView style={{marginTop: 10}}>
-          {/* <PodcastBox data={data} /> */}
-          <PodcastBox navigation={this.props.navigation} />
-        </ScrollView>
+        <Text>{this.state.data.title}</Text>
       </View>
     );
   }

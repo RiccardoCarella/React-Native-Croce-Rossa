@@ -1,13 +1,13 @@
 /* REACT */
 import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 /* LIBRARIES */
 import FlexImage from 'react-native-flex-image';
 /* VECTOR ICONS */
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 /* UTILS */
-import {normalize} from '../utils';
+import {normalize} from './utils';
 
 export default class PodcastBox extends PureComponent {
   onDowload() {
@@ -15,7 +15,15 @@ export default class PodcastBox extends PureComponent {
   }
   render() {
     return (
-      <View style={styles.boxContainer}>
+      <TouchableOpacity
+        onPress={() =>
+          this.props.navigation.navigate('PodcastSingle', {
+            image: null,
+            title: 'TITLE PODCAST',
+            date: '21/02/2020',
+          })
+        }
+        style={styles.boxContainer}>
         <View style={styles.dataContainer}>
           <FlexImage
             style={styles.dataImage}
@@ -34,7 +42,7 @@ export default class PodcastBox extends PureComponent {
               this.onDowload();
             }}></Icon>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

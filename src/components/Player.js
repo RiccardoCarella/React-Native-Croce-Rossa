@@ -13,7 +13,7 @@ import {
 import Config from './Config';
 
 /* UTILS */
-import {normalize} from '../utils';
+import {normalize} from './utils';
 
 /* LIBRARIES */
 import TrackPlayer, {Capability, Event, State} from 'react-native-track-player';
